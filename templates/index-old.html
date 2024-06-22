@@ -1,0 +1,71 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech-to-Text and Text-to-Speech</title>
+</head>
+<body>
+    <h1>Speech-to-Text</h1>
+    <form id="upload-form" action="/transcribe" method="POST" enctype="multipart/form-data">
+        <input type="file" name="audio_file" accept="audio/*">
+        <button type="submit">Transcribe</button>
+    </form>
+    <div id="transcription"></div>
+
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(this);
+            const response = await fetch('/transcribe', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+            const transcriptionDiv = document.getElementById('transcription');
+            
+            if (result.transcription) {
+                transcriptionDiv.innerText = result.transcription;
+            } else {
+                transcriptionDiv.innerText = 'Error: ' + (result.error || 'Unknown error');
+            }
+        });
+
+        document.getElementById('tts-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const text = document.getElementById('text-input').value.trim();
+            if (!text) {
+                alert('Please enter some text.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('text', text);
+
+            try {
+                const response = await fetch('/synthesize', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                const audioOutputDiv = document.getElementById('audio-output');
+                
+                if (result.audio_url) {
+                    audioOutputDiv.innerHTML = `<audio controls src="${result.audio_url}"></audio>`;
+                } else {
+                    audioOutputDiv.innerText = 'Error: ' + (result.error || 'Unknown error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                audioOutputDiv.innerText = 'Error: Failed to fetch data from server.';
+            }
+        });
+    </script>
+</body>
+</html>
