@@ -26,9 +26,10 @@ db = client['sttdb']
 
 @app.route('/')
 def index():
-    if 'user_id' in session:
-        return render_template('index.html')
-    return redirect(url_for('login'))
+    # if 'user_id' in session:
+    #     return render_template('index.html')
+    # return redirect(url_for('login'))
+    return render_template('index.html')
 
 @app.route('/transcribe', methods=['POST'])
 def transcribe():
