@@ -36,14 +36,14 @@
                             <a href="#about" class="nav__link">About</a>
                         </li>
                         <li>
-                            <a href="./Signup.html" class="button-header button--flex">
+                            <a href="{{ url_for('signup')}}" class="button-header button--flex">
                                 <span class="button--flex">
                                     <i class="button__icon"></i></i>Sign Up
                                 </span>
                             </a>
                         </li>
                         <li>
-                            <a href="./login.html" class="button-header button--flex">
+                            <a href="{{ url_for('login')}}" class="button-header button--flex">
                                 <span class="button--flex">
                                     <i class="button__icon"></i></i>Login
                                 </span>
@@ -223,6 +223,6 @@
        <script src="https://unpkg.com/scrollreveal"></script> 
 
         <!--=============== MAIN JS ===============-->
-         <script src="../static/js/main.js"></script> 
+         <script src="../static/js/script.js"></script> 
     </body>
 </html>

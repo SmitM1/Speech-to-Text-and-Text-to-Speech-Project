@@ -1,6 +1,6 @@
 # app.py
 
-from flask import Flask, render_template, request, jsonify, send_from_directory
+from flask import Flask, render_template, request, jsonify, send_from_directory, url_for
 from model import transcribe_audio, synthesize_text
 import os
 import uuid
@@ -53,6 +53,14 @@ def synthesize():
 @app.route('/audio/<filename>')
 def audio(filename):
     return send_from_directory(app.config['AUDIO_FOLDER'], filename)
+
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
