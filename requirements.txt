@@ -1,0 +1,9 @@
+flask
+pymongo
+torch
+transformers.Wav2Vec2ForCTC
+transformers.Wav2Vec2Processor
+transformers.SpeechT5Processor
+transformers.SpeechT5ForTextToSpeech
+transformers.SpeechT5HifiGan
+torchaudio

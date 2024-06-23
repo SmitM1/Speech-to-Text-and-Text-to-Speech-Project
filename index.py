@@ -6,7 +6,7 @@ from pymongo import MongoClient
 from model import transcribe_audio, synthesize_text
 import os
 import uuid
-
+#mongodb+srv://smitmstr1:RlwSAo3aZ8vw278t@cluster0.81zfbcz.mongodb.net/
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 app.config['UPLOAD_FOLDER'] = 'uploads'
@@ -18,7 +18,10 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 os.makedirs(app.config['AUDIO_FOLDER'], exist_ok=True)
 
 # MongoDB configuration
-client = MongoClient("mongodb://localhost:27017/")
+# client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb+srv://smitmstr1:RlwSAo3aZ8vw278t@cluster0.81zfbcz.mongodb.net/")
+if client: 
+    print("hello")
 db = client['sttdb']
 
 @app.route('/')
