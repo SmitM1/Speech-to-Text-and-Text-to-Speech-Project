@@ -22,7 +22,9 @@
             </div>
             <form class="form-content" action="{{ url_for('login') }}" method="POST">
                 <div class="form-heading">
-                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="" />
+                    <a href="{{ url_for('index') }}" class="nav__logo">
+                        <img src="{{ url_for('static', filename='img/logo.png') }}" width="100px" height="100px">
+                    </a>
                     <h1>Login</h1>
                     <p>Please fill out all the required fields to login!</p>
                 </div>
@@ -40,6 +42,7 @@
                         </div>
                     </div>
                     <button type="submit">Login</button>
+                    <p>Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
                 </div>
                 {% if error %}
                 <p class="error">{{ error }}</p>
