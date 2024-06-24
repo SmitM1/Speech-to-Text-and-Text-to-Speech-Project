@@ -1,12 +1,10 @@
-# app.py
-
 from flask import Flask, render_template, request, jsonify, send_from_directory, url_for, redirect, session, flash
 from werkzeug.security import check_password_hash, generate_password_hash
 from pymongo import MongoClient
 from model import transcribe_audio, synthesize_text
 import os
 import uuid
-#mongodb+srv://smitmstr1:RlwSAo3aZ8vw278t@cluster0.81zfbcz.mongodb.net/
+
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 app.config['UPLOAD_FOLDER'] = 'uploads'
@@ -28,7 +26,7 @@ db = client['sttdb']
 def index():
     # if 'user_id' in session:
     #     return render_template('index.html')
-    # return redirect(url_for('login'))
+    # return redirect(url_for('signup'))
     return render_template('index.html')
 
 @app.route('/transcribe', methods=['POST'])
@@ -120,7 +118,7 @@ def login():
 def logout():
     """Log user out"""
     session.clear()
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)

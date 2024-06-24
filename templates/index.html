@@ -35,6 +35,15 @@
                         <li class="nav__item">
                             <a href="#about" class="nav__link">About</a>
                         </li>
+                        {% if 'user_id' in session %}
+                        <li>
+                            <a href="{{ url_for('logout')}}" class="button-header button--flex">
+                                <span class="button--flex">
+                                    <i class="button__icon"></i></i>Log Out
+                                </span>
+                            </a>
+                        </li>
+                        {% else %}
                         <li>
                             <a href="{{ url_for('signup')}}" class="button-header button--flex">
                                 <span class="button--flex">
@@ -49,6 +58,7 @@
                                 </span>
                             </a>
                         </li>
+                        {% endif %}
                     </ul>
 
                     <div class="nav__close" id="nav-close">
