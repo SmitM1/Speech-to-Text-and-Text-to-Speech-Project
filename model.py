@@ -1,5 +1,3 @@
-# model.py
-
 import torch
 from transformers import Wav2Vec2ForCTC, Wav2Vec2Processor, SpeechT5Processor, SpeechT5ForTextToSpeech, SpeechT5HifiGan
 import torchaudio
