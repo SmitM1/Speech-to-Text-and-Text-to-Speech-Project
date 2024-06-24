@@ -1,176 +1,147 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <!--=============== FAVICON ===============-->
-        <link rel="shortcut icon" href="../static/img/favicon.png" type="image/x-icon">
-
-        <!--=============== REMIX ICONS ===============-->
-        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-
-        <!--=============== CSS ===============-->
-        <link rel="stylesheet" href="../static/css/styles.css">
-
-        <title>Speech-to-Text</title>
-    </head>
-    <body>
-      
-        <!--=============== HEADER ===============-->
-        <header class="header" id="header">
-            <nav class="nav container">
-                <a href="#" class="nav__logo">
-                    <img src="static/img/logo.png" width="100px" height="100px">
-                </a>
-
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list">
-                        <li class="nav__item">
-                            <a href="#home" class="nav__link active-link">Home</a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#specs" class="nav__link">Features</a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#about" class="nav__link">About</a>
-                        </li>
-                        {% if 'user_id' in session %}
-                        <li>
-                            <a href="{{ url_for('logout')}}" class="button-header button--flex">
-                                <span class="button--flex">
-                                    <i class="button__icon"></i></i>Log Out
-                                </span>
-                            </a>
-                        </li>
-                        {% else %}
-                        <li>
-                            <a href="{{ url_for('signup')}}" class="button-header button--flex">
-                                <span class="button--flex">
-                                    <i class="button__icon"></i></i>Sign Up
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url_for('login')}}" class="button-header button--flex">
-                                <span class="button--flex">
-                                    <i class="button__icon"></i></i>Login
-                                </span>
-                            </a>
-                        </li>
-                        {% endif %}
-                    </ul>
-
-                    <div class="nav__close" id="nav-close">
-                        <i class="ri-close-line"></i>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/img/favicon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Speech-to-Text</title>
+</head>
+<body>
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="{{ url_for('index') }}" class="nav__logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" width="100px" height="100px">
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#specs" class="nav__link">Features</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link">About</a>
+                    </li>
+                    {% if 'user_id' in session %}
+                    <li>
+                        <a href="{{ url_for('logout') }}" class="button-header button--flex">
+                            <span class="button--flex">
+                                <i class="button__icon"></i>Log Out
+                            </span>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{{ url_for('signup') }}" class="button-header button--flex">
+                            <span class="button--flex">
+                                <i class="button__icon"></i>Sign Up
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('login') }}" class="button-header button--flex">
+                            <span class="button--flex">
+                                <i class="button__icon"></i>Login
+                            </span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+            </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-function-line"></i>
+            </div>
+        </nav>
+    </header>
+    <main class="main">
+        <section class="home section" id="home">
+            <div class="home__container container grid">
+                <div class="home__data">
+                    <div class="home__header">
+                        <h1 class="home__title">AI</h1> 
+                        <h2 class="home__subtitle">Voice To Text</h2>
+                    </div>
+                    <div class="home__footer">
+                        <h3 class="home__title-description">Overview</h3>
+                        <p class="home__description">
+                            Develop LSTM-based speech recognition models with TensorFlow or PyTorch. Create an API for audio transcription. Users upload or record audio on the website, receiving text output via the API. Test and deploy for reliability.
+                        </p>
                     </div>
                 </div>
-
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class="ri-function-line"></i>
-                </div>
-            </nav>
-        </header>
-
-        <main class="main">
-            <!--=============== HOME ===============-->
-            <section class="home section" id="home">
-                <div class="home__container container grid">
-                    
-                    
-                    <div class="home__data">
-                        <div class="home__header">
-                            <h1 class="home__title">AI</h1> 
-                            <h2 class="home__subtitle">Voice To Text</h2>
-                        </div>
-
-                        <div class="home__footer">
-                            <h3 class="home__title-description">Overview</h3>
-                            <p class="home__description">
-                                Develop LSTM-based speech recognition models with TensorFlow or PyTorch. Create an API for audio transcription. Users upload or record audio on the website, receiving text output via the API. Test and deploy for reliability.
-                            </p>
-                            
-                            
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="left-img">
-                        <img src="../static/img/wave.png" alt="" class="home__img">
-                        <form id="upload-form" action="/transcribe" method="POST" enctype="multipart/form-data">
-                            <input type="file" name="audio_file" id="upload" accept="audio/*" hidden>
-                            <label for="upload">Upload your audio here</label>
-                            <button type="submit">Proceed</button>
-                        </form>
+                <div class="left-img">
+                    <img src="{{ url_for('static', filename='img/wave.png') }}" alt="" class="home__img">
+                    <form id="upload-form" action="/transcribe" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="audio_file" id="upload" accept="audio/*" hidden>
+                        <label for="upload">Upload your audio here</label>
+                        <button type="submit">Proceed</button>
+                    </form>
                     <div class="transcription2">
                         <div id="transcription"></div>
                     </div>
-                    </div>
-
                 </div>
-            </section>
+            </div>
+        </section>
+        <!--=============== SPECS ===============-->
+        <section class="specs section grid" id="specs">
+            <h2 class="section__title section__title-gradient">Features</h2>
 
-            <!--=============== SPECS ===============-->
-            <section class="specs section grid" id="specs">
-                <h2 class="section__title section__title-gradient">Features</h2>
-
-                <div class="specs__container container grid">
-                    <div class="specs__content grid">
-                        <div class="specs__data">
-                            <h3 class="specs__title">Versatile AI Voices</h3>
-                            <span class="specs__subtitle">Leverage our diverse range of marketplace <br> 
-                                voices for diverse applications, each engineered <br> 
-                                to capture the essence of human speech.</span>
-                        </div>
-
-                        <br>
-                        <div class="specs__data">
-                            <h3 class="specs__title">Custom AI Voice Cloning</h3>
-                            <span class="specs__subtitle">Utilize our advanced AI voice cloning models <br> 
-                                to clone any voice with high accuracy and authenticity.</span>
-                        </div>
-                        <br>
-                        <div class="specs__data">
-                            <h3 class="specs__title">Unparalleled Voice AI Generator</h3>
-                            <span class="specs__subtitle">Access an extensive library of voices for any scenario, <br> 
-                                from corporate presentations to entertainment.</span>
-                        </div>
+            <div class="specs__container container grid">
+                <div class="specs__content grid">
+                    <div class="specs__data">
+                        <h3 class="specs__title">Versatile AI Voices</h3>
+                        <span class="specs__subtitle">Leverage our diverse range of marketplace <br> 
+                            voices for diverse applications, each engineered <br> 
+                            to capture the essence of human speech.</span>
                     </div>
-                    
-                    <div>
-                        <img src="../static/img/microphone.png" alt="" class="specs__img">
+
+                    <br>
+                    <div class="specs__data">
+                        <h3 class="specs__title">Custom AI Voice Cloning</h3>
+                        <span class="specs__subtitle">Utilize our advanced AI voice cloning models <br> 
+                            to clone any voice with high accuracy and authenticity.</span>
+                    </div>
+                    <br>
+                    <div class="specs__data">
+                        <h3 class="specs__title">Unparalleled Voice AI Generator</h3>
+                        <span class="specs__subtitle">Access an extensive library of voices for any scenario, <br> 
+                            from corporate presentations to entertainment.</span>
                     </div>
                 </div>
-            </section>
-
-            <!--=============== DISCOUNT ===============-->
-            <section class="discount section" id="about">
-                <div class="discount__container container grid">
-                    <div class="discount__animate">
-                        <h2 class="discount__title">Are you ready for the <br> Magic?</h2>
-                        <p class="discount__description">Upload your file</p>
-                        <a href="#" class="button button--flex">
-                            <i class="button__icon"></i>Upload
-                        </a>
-                    </div>
-
-                    <img src="../static/img/wave.png" alt="" class="discount__img">
+                
+                <div>
+                    <img src="../static/img/microphone.png" alt="" class="specs__img">
                 </div>
-            </section>
+            </div>
+        </section>
 
+        <!--=============== DISCOUNT ===============-->
+        <section class="discount section" id="about">
+            <div class="discount__container container grid">
+                <div class="discount__animate">
+                    <h2 class="discount__title">Are you ready for the <br> Magic?</h2>
+                    <p class="discount__description">Upload your file</p>
+                    <a href="#" class="button button--flex">
+                        <i class="button__icon"></i>Upload
+                    </a>
+                </div>
 
-
-        <!--=============== FOOTER ===============-->
+                <img src="../static/img/wave.png" alt="" class="discount__img">
+            </div>
+        </section>
+        
         <footer class="footer section">
             <div class="footer__container container grid">
             </div>
-
             <p class="footer__copy">
                 <a href="" target="" class="footer__copy-link">&#169; Project By Smit</a>
             </p>
         </footer>
-
-
         <script>
             document.getElementById('upload-form').addEventListener('submit', async function(event) {
                 event.preventDefault();
@@ -180,59 +151,25 @@
                     method: 'POST',
                     body: formData
                 });
-    
+
                 const result = await response.json();
-                const transcriptionDiv = document.getElementById('transcription');
                 
-                if (result.transcription) {
-                    transcriptionDiv.innerText = result.transcription;
+                if (result.redirect) {
+                    window.location.href = result.redirect;
                 } else {
-                    transcriptionDiv.innerText = 'Error: ' + (result.error || 'Unknown error');
-                }
-            });
-    
-            document.getElementById('tts-form').addEventListener('submit', async function(event) {
-                event.preventDefault();
-    
-                const text = document.getElementById('text-input').value.trim();
-                if (!text) {
-                    alert('Please enter some text.');
-                    return;
-                }
-    
-                const formData = new FormData();
-                formData.append('text', text);
-    
-                try {
-                    const response = await fetch('/synthesize', {
-                        method: 'POST',
-                        body: formData
-                    });
-    
-                    const result = await response.json();
-                    const audioOutputDiv = document.getElementById('audio-output');
-                    
-                    if (result.audio_url) {
-                        audioOutputDiv.innerHTML = `<audio controls src="${result.audio_url}"></audio>`;
+                    const transcriptionDiv = document.getElementById('transcription');
+                    if (result.transcription) {
+                        transcriptionDiv.innerText = result.transcription;
                     } else {
-                        audioOutputDiv.innerText = 'Error: ' + (result.error || 'Unknown error');
+                        transcriptionDiv.innerText = 'Error: ' + (result.error || 'Unknown error');
                     }
-                } catch (error) {
-                    console.error('Error:', error);
-                    audioOutputDiv.innerText = 'Error: Failed to fetch data from server.';
                 }
             });
         </script>
-
-        <!--=============== SCROLL UP ===============-->
         <a href="#" class="scrollup" id="scroll-up">
             <i class="ri-arrow-up-s-line scrollup__icon"></i>
         </a>
-        
-        <!--=============== SCROLL REVEAL ===============-->
-       <script src="https://unpkg.com/scrollreveal"></script> 
-
-        <!--=============== MAIN JS ===============-->
-         <script src="../static/js/script.js"></script> 
+        <script src="https://unpkg.com/scrollreveal"></script> 
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script> 
     </body>
 </html>

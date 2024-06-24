@@ -31,6 +31,10 @@ def index():
 
 @app.route('/transcribe', methods=['POST'])
 def transcribe():
+    if 'user_id' not in session:
+        return jsonify({'redirect': url_for('login')})
+
+
     try:
         audio_file = request.files['audio_file']
         if audio_file:
