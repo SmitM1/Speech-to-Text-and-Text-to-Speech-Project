@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="../static/img/favicon.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>Speech-to-Text</title>
+    <title>AI Speech-to-Text</title>
 </head>
 <body>
     <header class="header" id="header">
@@ -85,6 +85,7 @@
                         <div id="transcription"></div>
                     </div>
                 </div>
+                
             </div>
         </section>
         <!--=============== SPECS ===============-->
@@ -126,9 +127,16 @@
                 <div class="discount__animate">
                     <h2 class="discount__title">Are you ready for the <br> Magic?</h2>
                     <p class="discount__description">Upload your file</p>
-                    <a href="#" class="button button--flex">
-                        <i class="button__icon"></i>Upload
-                    </a>
+                    <div class="right-img">
+                        <img src="{{ url_for('static', filename='img/wave.png') }}" alt="" class="home__img">
+                        <form id="synthesize-form" action="/synthesize" method="POST">
+                            <input type="text" name="text" id="text" placeholder="Enter text to synthesize" required>
+                            <button type="submit">Synthesize</button>
+                        </form>
+                        <div class="synthesis2">
+                            <div id="audio-output"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <img src="../static/img/wave.png" alt="" class="discount__img">
@@ -142,6 +150,12 @@
                 <a href="" target="" class="footer__copy-link">&#169; Project By Smit</a>
             </p>
         </footer>
+        
+        <a href="#" class="scrollup" id="scroll-up">
+            <i class="ri-arrow-up-s-line scrollup__icon"></i>
+        </a>
+        <script src="https://unpkg.com/scrollreveal"></script> 
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script> 
         <script>
             document.getElementById('upload-form').addEventListener('submit', async function(event) {
                 event.preventDefault();
@@ -165,11 +179,29 @@
                     }
                 }
             });
+
+            document.getElementById('synthesize-form').addEventListener('submit', async function(event) {
+                event.preventDefault();
+                
+                const formData = new FormData(this);
+                const response = await fetch('/synthesize', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                
+                if (result.redirect) {
+                    window.location.href = result.redirect;
+                } else {
+                    if (result.audio_url) {
+                        const audioOutputDiv = document.getElementById('audio-output');
+                         audioOutputDiv.innerHTML = `<audio controls><source src="${result.audio_url}" type="audio/wav">Your browser does not support the audio element.</audio>`;
+                    } else {
+                            console.error('Error synthesizing text:', result.error);
+                            }
+                }
+            });
         </script>
-        <a href="#" class="scrollup" id="scroll-up">
-            <i class="ri-arrow-up-s-line scrollup__icon"></i>
-        </a>
-        <script src="https://unpkg.com/scrollreveal"></script> 
-        <script src="{{ url_for('static', filename='js/script.js') }}"></script> 
     </body>
 </html>

@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, jsonify, send_from_directory, url_for, redirect, session, flash
 from werkzeug.security import check_password_hash, generate_password_hash
 from pymongo import MongoClient
-from model import transcribe_audio, synthesize_text
+from model import transcribe_audio
+from model2 import synthesize_text_to_audio
 import os
 import uuid
 
@@ -53,18 +54,26 @@ def transcribe():
 
 @app.route('/synthesize', methods=['POST'])
 def synthesize():
+    if 'user_id' not in session:
+        return jsonify({'redirect': url_for('login')})
+    
     try:
         text = request.form['text']
         if text:
             # Synthesize the text to speech
-            audio_path = os.path.join(app.config['AUDIO_FOLDER'], f"{uuid.uuid4()}.wav")
-            synthesize_text(text, audio_path)
+            audio_filename = f"{uuid.uuid4()}.wav"
+            audio_path = os.path.join(app.config['AUDIO_FOLDER'], audio_filename)
             
-            return jsonify({'audio_url': f'/audio/{os.path.basename(audio_path)}'})
+            success, error_msg = synthesize_text_to_audio(text, audio_path)
+            if success:
+                return jsonify({'audio_url': f'/audio/{audio_filename}'})
+            else:
+                return jsonify({'error': error_msg})
         else:
             return jsonify({'error': 'No text provided'})
     except Exception as e:
         return jsonify({'error': str(e)})
+
 
 @app.route('/audio/<filename>')
 def audio(filename):
