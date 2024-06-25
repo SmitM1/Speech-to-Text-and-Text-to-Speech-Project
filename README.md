@@ -1,9 +1,9 @@
 <div align="center">
 
-<h1><a href="https://your-project-url.com">Flask Speech-to-Text and Text-to-Speech Web Application</a></h1>
+<h1>AI Voice to Text and Text to Voice</h1>
 
-<a href="https://github.com/your-username/your-repo/blob/main/LICENSE">
-<img alt="License" src="https://img.shields.io/github/license/your-username/your-repo?style=flat&color=eee&label="> </a>
+<a href="https://github.com/SmitM1/Speech-to-Text-and-Text-to-Speech-Project/tree/main/LICENSE">
+<img alt="License" src="https://img.shields.io/github/license/SmitM1/Speech-to-Text-and-Text-to-Speech-Project?style=flat&color=eee&label="> </a>
 
 <a href="https://github.com/your-username/your-repo/graphs/contributors">
 <img alt="People" src="https://img.shields.io/github/contributors/your-username/your-repo?style=flat&color=ffaaf2&label=Contributors"> </a>
