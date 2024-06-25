@@ -13,7 +13,7 @@
 <figure>
   <img src="static\img\ss.jpg" alt="Screenshot" style="width:100%">
   <br/>
-  <figcaption>Screenshot of the application</figcaption>
+  <figcaption>Landing Page Voice to Text</figcaption>
 </figure>
 
 </div>
