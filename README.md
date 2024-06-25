@@ -11,7 +11,7 @@
 <h3>Flask-based Web Application for Speech-to-Text and Text-to-Speech</h3>
 
 <figure>
-  <img src="path/to/your/screenshot.png" alt="Screenshot" style="width:100%">
+  <img src="static\img\ss.jpg" alt="Screenshot" style="width:100%">
   <br/>
   <figcaption>Screenshot of the application</figcaption>
 </figure>
@@ -40,18 +40,50 @@ The motivation behind this project was to create a user-friendly tool for conver
 - **HTML/CSS:** Front-end development.
 - **JavaScript:** Enhancing user interactions.
 
+## Usage
+
+1. **Speech-to-Text:**
+   - Navigate to the speech-to-text section.
+   - Upload an audio file for transcription.
+   - Wait for the transcription results.
+
+2. **Text-to-Speech:**
+   - Go to the text-to-speech section.
+   - Enter text to be converted into speech.
+   - Click the "Synthesize" button to generate speech.
+
 ## Setup
 
-To run this project locally, follow these steps:
+To set up this project locally, follow these steps:
 
-```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
-# Set up virtual environment (optional but recommended)
-python -m venv venv
-# Activate virtual environment
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-# Install dependencies
-pip install -r requirements.txt
-# Run the application
-python app.py
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo
+
+2. **Install dependencies:**
+
+   ```bash
+   pip install -r requirements.txt
+
+3. **Set up environment variables:**
+
+    - Create a '.env' file in the root directory.
+    - Add the following variables to the '.env' file:
+
+    ```bash
+    FLASK_APP=app.py
+    FLASK_ENV=development
+    SECRET_KEY=your_secret_key_here
+
+4. **Start the Flask application:**
+
+   ```bash
+   flask run
+
+   - The application will start running locally at 'http://localhost:5000'.
+
+## License
+
+    - This project is licensed under the MIT License. See the LICENSE file for more details.
