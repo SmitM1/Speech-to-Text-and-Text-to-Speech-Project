@@ -171,6 +171,15 @@ img {
   max-height: 277px; overflow-y: auto;}
 
 .home__img {top: -143px !important; position: absolute;}
+.discount__animate {width: 100%;}
+
+.discount__container {grid-template-columns: 335px max-content;}
+#synthesize-form #text {padding: 12px 16px; margin-bottom: 18px;}
+#synthesize-form button { margin-bottom: 18px;}
+.discount .home__header h2{ line-height: 65px;}
+
+
+.footer.section {padding: 0rem 0 2rem;}
 
 
 
@@ -789,7 +798,7 @@ img {
     padding-top: 3rem;
   }
   .footer__copy {
-    margin-top: 9rem;
+    margin-top: 0rem;
   }
 }
 
@@ -948,3 +957,16 @@ button:hover {
     font-size: 16px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .show-menu .nav__list li:nth-last-child(1) span {text-transform: uppercase;}
+  .home__img {top: -118px !important;}
+  .left-img {padding: 111px 22px 52px 22px;}
+  .specs__img {  width: 317px;  top: -1rem;  right: -13rem;}
+  .discount__container {grid-template-columns: auto;}
+  #synthesize-form {text-align: center;}
+  .synthesis2 #audio-output audio {width: 100%;}
+}
+
+
+
