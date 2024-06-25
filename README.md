@@ -5,20 +5,8 @@
 <a href="https://github.com/SmitM1/Speech-to-Text-and-Text-to-Speech-Project/tree/main/LICENSE">
 <img alt="License" src="https://img.shields.io/github/license/SmitM1/Speech-to-Text-and-Text-to-Speech-Project?style=flat&color=eee&label="> </a>
 
-<a href="https://github.com/your-username/your-repo/graphs/contributors">
-<img alt="People" src="https://img.shields.io/github/contributors/your-username/your-repo?style=flat&color=ffaaf2&label=Contributors"> </a>
-
-<a href="https://github.com/your-username/your-repo/stargazers">
-<img alt="Stars" src="https://img.shields.io/github/stars/your-username/your-repo?style=flat&color=98c379&label=Stars"></a>
-
-<a href="https://github.com/your-username/your-repo/network/members">
-<img alt="Forks" src="https://img.shields.io/github/forks/your-username/your-repo?style=flat&color=66a8e0&label=Forks"> </a>
-
-<a href="https://github.com/your-username/your-repo/watchers">
-<img alt="Watches" src="https://img.shields.io/github/watchers/your-username/your-repo?style=flat&color=f5d08b&label=Watches"> </a>
-
-<a href="https://github.com/your-username/your-repo/pulse">
-<img alt="Last Updated" src="https://img.shields.io/github/last-commit/your-username/your-repo?style=flat&color=e06c75&label=Last+Updated"> </a>
+<a href="https://github.com/SmitM1/Speech-to-Text-and-Text-to-Speech-Project/pulse">
+<img alt="Last Updated" src="https://img.shields.io/github/last-commit/SmitM1/Speech-to-Text-and-Text-to-Speech-Project?style=flat&color=e06c75&label=Last+Updated"> </a>
 
 <h3>Flask-based Web Application for Speech-to-Text and Text-to-Speech</h3>
 
