@@ -79,11 +79,11 @@ To set up this project locally, follow these steps:
 
 4. **Start the Flask application:**
 
-   ```bash
-   flask run
+    ```bash
+    flask run
 
-   - The application will start running locally at 'http://localhost:5000'.
+- The application will start running locally at 'http://localhost:5000'.
 
 ## License
 
-    - This project is licensed under the MIT License. See the LICENSE file for more details.
+- This project is licensed under the MIT License. See the LICENSE file for more details.
