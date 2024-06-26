@@ -17,8 +17,8 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 os.makedirs(app.config['AUDIO_FOLDER'], exist_ok=True)
 
 # MongoDB configuration
-# client = MongoClient("mongodb://localhost:27017/")
-client = MongoClient("mongodb+srv://smitmstr1:RlwSAo3aZ8vw278t@cluster0.81zfbcz.mongodb.net/")
+client = MongoClient("mongodb://localhost:27017/")
+# client = MongoClient("mongodb+srv://smitmstr1:RlwSAo3aZ8vw278t@cluster0.81zfbcz.mongodb.net/")
 if client: 
     print("hello")
 db = client['sttdb']

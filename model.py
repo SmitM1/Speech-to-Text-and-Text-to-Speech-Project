@@ -8,11 +8,6 @@ import uuid
 stt_processor = Wav2Vec2Processor.from_pretrained("facebook/wav2vec2-base-960h")
 stt_model = Wav2Vec2ForCTC.from_pretrained("facebook/wav2vec2-base-960h")
 
-# Load the pre-trained TTS model and tokenizer
-# tts_model_name = "facebook/mms-tts"
-# tts_model = AutoModelWithLMHead.from_pretrained(tts_model_name)
-# tts_tokenizer = AutoTokenizer.from_pretrained(tts_model_name)
-
 def transcribe_audio(audio_file_path):
     # Load the audio file
     waveform, sample_rate = torchaudio.load(audio_file_path)
@@ -36,27 +31,3 @@ def transcribe_audio(audio_file_path):
     transcription = stt_processor.batch_decode(predicted_ids)[0]
     
     return transcription
-
-# def synthesize_text(text, output_file_path):
-#     print(f"Received text: {text}")  # Debug print
-    
-#     try:
-#         # Tokenize the input text
-#         input_ids = tts_tokenizer(text, return_tensors="pt").input_ids
-
-#         # Generate speech with the TTS model
-#         with torch.no_grad():
-#             generated_ids = tts_model.generate(input_ids)
-
-#         # Decode the generated speech
-#         speech = tts_tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
-
-#         # Save the speech to a file
-#         os.makedirs(os.path.dirname(output_file_path), exist_ok=True)  # Ensure directory exists
-#         with open(output_file_path, "w") as f:
-#             f.write(speech)
-
-#         print(f"Saved audio to: {output_file_path}")  # Debug print
-#     except Exception as e:
-#         print(f"Error synthesizing text: {str(e)}")
-#         raise  # Raise the exception to propagate it to the caller
